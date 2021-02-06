@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 21:07:05 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 16:13:59 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:11:59 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_no_precision4(t_param *param, int n, int len)
 	else if (param->padding == '0')
 	{
 		param->ret += ft_putstr("0x");
-		while(param->width > len)
+		while (param->width > len)
 		{
 			param->ret += ft_putchar('0');
 			param->width--;
@@ -72,7 +72,7 @@ void	print_greater_width4(t_param *param, int n, int len, int displayed_prec)
 
 void	print_precision4(t_param *param, int n, int len, int displayed_prec)
 {
-	if (param->precision >= param->width) //attention à width si on l'a déjà -- dans get_disp_prec.
+	if (param->precision >= param->width)
 	{
 		param->ret += ft_putstr("0x");
 		while (displayed_prec > 0)
@@ -105,7 +105,7 @@ void	print_p(t_param *param)
 	{
 		param->ret += ft_putchar(' ');
 		param->width--;
-		if(param->width == len)
+		if (param->width == len)
 			param->ret += ft_putstr("0x");
 		if (param->width == len)
 			ft_put_hexa(param, n);

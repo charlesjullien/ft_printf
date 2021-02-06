@@ -6,13 +6,13 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:54:33 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/05 18:02:20 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:07:51 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		get_int_len(t_param *param, int n)
+int	get_int_len(t_param *param, int n)
 {
 	int		len;
 
@@ -28,23 +28,18 @@ int		get_int_len(t_param *param, int n)
 	return (len);
 }
 
-int		parse(t_param *param, int n, int *ptr_len)
+int	parse(t_param *param, int n, int *ptr_len)
 {
 	int displayed_prec;
 
-	displayed_prec = param->precision - *ptr_len; // = 4
-	/*if (displayed_prec > 0)
-		param->width = param->width - displayed_prec; // = 10
-	else
-		param->width = param->width - *ptr_len; //width déjà paramétrée pour afficher le bon nombre de padding.
-	*/if (n < 0 && displayed_prec >= 0)
+	displayed_prec = param->precision - *ptr_len;
+	if (n < 0 && displayed_prec >= 0)
 	{
-		displayed_prec++; // disp_prec = 5;
-		param->width--; // width = 9;
+		displayed_prec++;
+		param->width--;
 	}
 	return (displayed_prec);
 }
-
 
 int		ft_putchar(char c)
 {

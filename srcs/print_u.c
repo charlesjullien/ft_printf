@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 14:44:16 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/04 21:06:40 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:14:07 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_no_precision2(t_param *param, int n, int len)
 	}
 	else if (param->padding == '0')
 	{
-		while(param->width > len)
+		while (param->width > len)
 		{
 			param->ret += ft_putchar('0');
 			param->width--;
@@ -68,7 +68,7 @@ void	print_greater_width2(t_param *param, int n, int len, int displayed_prec)
 
 void	print_precision2(t_param *param, int n, int len, int displayed_prec)
 {
-	if (param->precision >= param->width) //attention à width si on l'a déjà -- dans get_disp_prec.
+	if (param->precision >= param->width)
 	{
 		while (displayed_prec > 0)
 		{

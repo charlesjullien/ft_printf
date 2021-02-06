@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:11:32 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 14:49:45 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:09:55 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_no_precision(t_param *param, int n, int len)
 			param->ret += ft_putchar('-');
 			n = n * (-1);
 		}
-		while(param->width > len)
+		while (param->width > len)
 		{
 			param->ret += ft_putchar('0');
 			param->width--;
@@ -51,7 +51,7 @@ void	print_rest(t_param *param, int n, int len, int displayed_prec)
 		param->ret += ft_putchar('0');
 		displayed_prec--;
 	}
-	ft_putnbr_fd(n, 1);	
+	ft_putnbr_fd(n, 1);
 }
 
 void	print_greater_width(t_param *param, int n, int len, int displayed_prec)
@@ -83,7 +83,7 @@ void	print_greater_width(t_param *param, int n, int len, int displayed_prec)
 
 void	print_precision(t_param *param, int n, int len, int displayed_prec)
 {
-	if (param->precision >= param->width) //attention à width si on l'a déjà -- dans get_disp_prec.
+	if (param->precision >= param->width)
 	{
 		if (n < 0)
 		{

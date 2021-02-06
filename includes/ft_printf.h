@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:03 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 16:32:38 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:23:40 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ struct							s_parameters
 		char	padding;
 		char	type;
 		char	base[17];
-		int			ret;
-		int			width;
-		int			precision;
-		char		base[17];
+		int		ret;
+		int		width;
+		int		precision;
+		char	base[17];
 };
 
 int		ft_printf(const char *str, ...);
@@ -45,6 +45,6 @@ void	print_c(t_param *param);
 void	print_s(t_param *param);
 void	print_u(t_param *param);
 void	print_p(t_param *param);
-void	print_x_or_X(t_param *param, unsigned long int n);
+void	print_x(t_param *param, unsigned long int n);
 
 #endif

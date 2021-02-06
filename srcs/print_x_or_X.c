@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:32:54 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 15:19:50 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 17:22:40 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_no_precision3(t_param *param, unsigned long int n, int len)
 	}
 	else if (param->padding == '0')
 	{
-		while(param->width > len)
+		while (param->width > len)
 		{
 			param->ret += ft_putchar('0');
 			param->width--;
@@ -34,7 +34,7 @@ void	print_no_precision3(t_param *param, unsigned long int n, int len)
 	}
 }
 
-void	print_rest3(t_param *param, unsigned long int n, int len, int displayed_prec)
+void	print_rest3(t_param *param, unsigned long int n, int displayed_prec)
 {
 	while (displayed_prec > 0)
 	{
@@ -44,14 +44,14 @@ void	print_rest3(t_param *param, unsigned long int n, int len, int displayed_pre
 	ft_put_hexa(param, n);
 }
 
-void	print_greater_width3(t_param *param, unsigned long int n, int len, int displayed_prec)
+void	big_width(t_param *param, unsigned long int n, int len, int disp_prec)
 {
 	if (param->padding == ' ')
 	{
-		while (displayed_prec > 0)
+		while (disp_prec > 0)
 		{
 			param->ret += ft_putchar('0');
-			displayed_prec--;
+			disp_prec--;
 		}
 		ft_put_hexa(param, n);
 	}
@@ -62,26 +62,26 @@ void	print_greater_width3(t_param *param, unsigned long int n, int len, int disp
 	}
 	if (param->padding == '0' || !param->padding)
 	{
-		print_rest3(param, n, len, displayed_prec);
+		print_rest3(param, n, disp_prec);
 	}
 }
 
-void	print_precision3(t_param *param, unsigned long int n, int len, int displayed_prec)
+void	print_prec3(t_param *param, unsigned long int n, int len, int disp_prec)
 {
-	if (param->precision >= param->width) //attention à width si on l'a déjà -- dans get_disp_prec.
+	if (param->precision >= param->width)
 	{
-		while (displayed_prec > 0)
+		while (disp_prec > 0)
 		{
 			param->ret += ft_putchar('0');
-			displayed_prec--;
+			disp_prec--;
 		}
 		ft_put_hexa(param, n);
 	}
 	else
-		print_greater_width3(param, n, len, displayed_prec);
+		big_width(param, n, len, disp_prec);
 }
 
-void	print_x_or_X(t_param *param, unsigned long int n)
+void	print_x(t_param *param, unsigned long int n)
 {
 	int hexa_len;
 	int len;
@@ -104,5 +104,5 @@ void	print_x_or_X(t_param *param, unsigned long int n)
 			ft_put_hexa(param, n);
 	}
 	if (param->precision >= 0)
-		print_precision3(param, n, len, displayed_prec);
+		print_prec3(param, n, len, displayed_prec);
 }

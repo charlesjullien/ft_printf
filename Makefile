@@ -12,7 +12,7 @@ SRCS =			srcs/ft_printf.c \
 				srcs/print_s.c \
 				srcs/print_d_or_i.c \
 				srcs/print_u.c \
-				srcs/print_x_or_X.c \
+				srcs/print_x.c \
 				srcs/print_p.c \
 OBJS = 			${SRCS:.c=.o}
 
