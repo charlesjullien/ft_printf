@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 18:11:32 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 18:17:34 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 18:23:52 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_no_precision(t_param *param, int n, int len)
 	{
 		if (n < 0)
 		{
-			param->ret += ft_putchar('-');
+			ft_putchar('-');
 			n = n * (-1);
 		}
 		while (param->width > len)
@@ -43,7 +43,7 @@ void	print_rest(t_param *param, int n, int len, int displayed_prec)
 {
 	if (n < 0)
 	{
-		param->ret += ft_putchar('-');
+		ft_putchar('-');
 		n = n * (-1);
 	}
 	while (displayed_prec > 0)
@@ -60,7 +60,7 @@ void	print_greater_width(t_param *param, int n, int len, int displayed_prec)
 	{
 		if (n < 0)
 		{
-			param->ret += ft_putchar('-');
+			ft_putchar('-');
 			n = n * (-1);
 		}
 		while (displayed_prec > 0)
@@ -87,7 +87,7 @@ void	print_precision(t_param *param, int n, int len, int displayed_prec)
 	{
 		if (n < 0)
 		{
-			param->ret += ft_putchar('-');
+			ft_putchar('-');
 			n = n * (-1);
 		}
 		while (displayed_prec > 0)
