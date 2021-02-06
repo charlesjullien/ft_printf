@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:35:47 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/05 19:04:50 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:02:18 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	parse_precision(t_param *param, const char *str, int *j)
 		param->precision = va_arg(param->ap, int);
 		*j = *j + 1;
 	}
-	if (ft_isdigit(str[*j]))
+	else
 		param->precision = ft_atoi(&str[*j]);
 	while (ft_isdigit(str[*j]))
 		*j = *j + 1;

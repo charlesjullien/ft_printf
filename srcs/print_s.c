@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:28:32 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 17:13:00 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/06 19:04:34 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ void	print_s(t_param *param)
 	char	*s;
 
 	i = 0;
-	s = ft_strdup(va_arg(param->ap, char*));
+	s = va_arg(param->ap, char*);
+	if (s == NULL)
+		ft_strlcpy(s, "(null)", 7);
 	len = get_len(param, s);
 	param->width = param->width - len;
 	while (!param->padding && param->width > 0)
