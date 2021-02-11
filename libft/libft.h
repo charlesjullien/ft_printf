@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:20:14 by cjullien          #+#    #+#             */
-/*   Updated: 2020/12/07 19:31:27 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/07 19:55:53 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void			*ft_memmove(void *destination, const void *source, size_t size);
 void			*ft_memset(void *pointer, int value, size_t count);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putendl_fd(char *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void			ft_putnbr_fd(long int n, int fd);
 void			ft_putstr_fd(char *s, int fd);
 char			**ft_split(char const *s, char c);
 char			*ft_strchr(const char *str, int to_find);

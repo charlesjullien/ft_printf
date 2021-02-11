@@ -6,13 +6,13 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 19:46:30 by cjullien          #+#    #+#             */
-/*   Updated: 2020/12/07 19:08:05 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/07 19:55:33 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(long int n, int fd)
 {
 	long int	num;
 	char		c;

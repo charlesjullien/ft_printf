@@ -6,20 +6,22 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:54:33 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 17:07:51 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:32:36 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int	get_int_len(t_param *param, int n)
+int	get_int_len(t_param *param, long long n)
 {
 	int		len;
 
 	len = 1;
 	if (n < 0)
 		len++;
-	while (n > 10 || n < -10)
+	if (n == 0 && param->precision == 0)
+		return (0);
+	while (n >= 10 || n <= -10)
 	{
 		len++;
 		n = n / 10;

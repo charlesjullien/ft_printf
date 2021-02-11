@@ -6,11 +6,11 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:28:32 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 19:04:34 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/08 17:36:27 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 int		get_len(t_param *param, char *s)
 {
@@ -67,8 +67,8 @@ void	print_s(t_param *param)
 
 	i = 0;
 	s = va_arg(param->ap, char*);
-	if (s == NULL)
-		ft_strlcpy(s, "(null)", 7);
+	if (!s)
+		s = param->null;
 	len = get_len(param, s);
 	param->width = param->width - len;
 	while (!param->padding && param->width > 0)

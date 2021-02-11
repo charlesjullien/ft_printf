@@ -6,23 +6,38 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:35:47 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 19:02:18 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:54:56 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-void	parse_precision(t_param *param, const char *str, int *j)
+void	parse_flags(t_param *param, const char *str)
 {
-	if (str[*j] == '*')
+	int i;
+
+	i = 0;
+	while (str[i] == '0')
 	{
-		param->precision = va_arg(param->ap, int);
-		*j = *j + 1;
+		param->padding = '0';
+		i++;
 	}
+	while (str[i] == '-')
+	{
+		param->padding = ' ';
+		i++;
+	}
+}
+
+void	parse_precision(t_param *param, const char *str)
+{
+	int i;
+
+	i = 1;
+	if (str[i] == '*')
+		param->precision = va_arg(param->ap, int);
 	else
-		param->precision = ft_atoi(&str[*j]);
-	while (ft_isdigit(str[*j]))
-		*j = *j + 1;
+		param->precision = ft_atoi(&str[i]);
 }
 
 void	get_hexa_len(unsigned long int n, int *hexa_len)
@@ -45,9 +60,9 @@ void	set_base_maj(t_param *param)
 	}
 }
 
-void	ft_put_hexa(t_param *param, unsigned long n)
+void	ft_put_hexa(t_param *param, unsigned long int n)
 {
 	if (n >= 16)
-		ft_put_hexa(param, n / 16);
+		ft_put_hexa(param, (unsigned long int)(n / 16));
 	param->ret += ft_putchar(param->base[n % 16]);
 }

@@ -6,28 +6,22 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:17:07 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 17:00:45 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/10 21:55:51 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h" //checker les leaks (pas free);
 
-int	check_if_valid_spec(const char *str)
+int		check_type(t_param *param)
 {
-	int	i;
+	char c;
 
-	i = 0;
-	if (str[i] == '0' || str[i] == '-')
-		i++;
-	while (ft_isdigit(str[i]))
-		i++;
-	if (str[i] == '.')
-		i++;
-	while (ft_isdigit(str[i]))
-		i++;
-	if (ft_strchr("cspdiuxX", str[i]))
+	c = param->type;
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' ||
+			c == 'u' || c == 'x' || c == 'X' || c == '%')
 		return (1);
-	return (0);
+	else
+		return (0);
 }
 
 void	find_type(t_param *param)
@@ -44,29 +38,36 @@ void	find_type(t_param *param)
 		print_x(param, va_arg(param->ap, unsigned long));
 	if (param->type == 'p')
 		print_p(param);
+	if (param->type == '%')
+		print_pct(param);
 }
 
-void	find_specifiers(t_param *param, const char *str, int *j)
+int	find_specifiers(t_param *param, const char *str, int *j)
 {
-	*j = *j + 1;
-	if (str[*j] == '0')
-		param->padding = '0';
-	else if (str[*j] == '-')
-		param->padding = ' ';
-	if (param->padding)
+	if (str[*j + 1])
+		*j = *j + 1;
+	parse_flags(param, &str[*j]);
+	while (str[*j] == '0' || str[*j] == '-')
 		*j = *j + 1;
 	if (str[*j] == '*')
 	{
 		param->width = va_arg(param->ap, int);
+		if (param->width < 0)
+			param->padding = ' ';
+		if (param->width < 0)
+			param->width = param->width * (-1);
 		*j = *j + 1;
 	}
-	else
+	else if (ft_isdigit(str[*j]))
 		param->width = ft_atoi(&str[*j]);
 	while (ft_isdigit(str[*j]))
 		*j = *j + 1;
 	if (str[*j] == '.')
-		parse_precision(param, str, &j);
+		parse_precision(param, &str[*j]);
+	while (str[*j] == '.' || str[*j] == '*' || ft_isdigit(str[*j]))
+		*j = *j + 1;
 	param->type = str[*j];
+	return (check_type(param));
 }
 
 t_param	*init_param(void)
@@ -79,12 +80,13 @@ t_param	*init_param(void)
 	param->padding = '\0';
 	param->type = '\0';
 	ft_strlcpy(param->base, "0123456789abcdef", 17);
+	ft_strlcpy(param->null, "(null)", 7);
 	param->ret = 0;
 	param->width = 0;
 	param->precision = -1;
 	return (param);
 }
-
+#include <stdio.h>
 int	ft_printf(const char *str, ...)
 {
 	int		i;
@@ -97,19 +99,18 @@ int	ft_printf(const char *str, ...)
 	va_start(param->ap, str);
 	while (str[i])
 	{
-		if (str[i] == '%' && check_if_valid_spec(&str[i + 1]))
+		if (str[i] == '%')
 		{
-			find_specifiers(param, str, &i);
+			if (find_specifiers(param, str, &i) == 0)
+				return (-1);
 			find_type(param);
 			reinit_param(param);
 		}
 		else
-		{
-			ft_putchar(str[i]);
-			param->ret++;
-		}
+			param->ret += ft_putchar(str[i]);
 		i++;
 	}
 	va_end(param->ap);
+	free(param);
 	return (param->ret);
 }

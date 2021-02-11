@@ -14,6 +14,7 @@ SRCS =			srcs/ft_printf.c \
 				srcs/print_u.c \
 				srcs/print_x.c \
 				srcs/print_p.c \
+				srcs/print_pct.c
 OBJS = 			${SRCS:.c=.o}
 
 .c.o:

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_c.c                                          :+:      :+:    :+:   */
+/*   print_pct.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/24 16:51:09 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/07 03:25:52 by cjullien         ###   ########.fr       */
+/*   Created: 2021/02/09 13:54:54 by cjullien          #+#    #+#             */
+/*   Updated: 2021/02/09 14:09:10 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_c(t_param *param)
+void	print_pct(t_param *param)
 {
-	while (!param->padding && param->width > 1)
+	char c;
+
+	c = ' ';
+	if (param->padding == '0')
+		c = '0';
+	while (param->width > 1 && param->padding != ' ')
 	{
-		param->ret += ft_putchar(' ');
+		param->ret += ft_putchar(c);
 		param->width--;
 	}
-	param->ret += ft_putchar(va_arg(param->ap, int));
-	while (param->padding && param->width > 1)
+	param->ret += ft_putchar('%');
+	while (param->width > 1)
 	{
-		if (param->padding == '0')
-			param->ret += ft_putchar('0');
-		else if (param->padding == ' ')
-			param->ret += ft_putchar(' ');
+		param->ret += ft_putchar(c);
 		param->width--;
 	}
 }

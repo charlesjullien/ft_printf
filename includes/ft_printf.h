@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:03 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/06 17:23:40 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:33:14 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,29 @@ struct							s_parameters
 		char	padding;
 		char	type;
 		char	base[17];
+		char	null[7];
 		int		ret;
 		int		width;
 		int		precision;
-		char	base[17];
 };
 
 int		ft_printf(const char *str, ...);
 void	ft_put_hexa(t_param *param, unsigned long n);
 void	set_base_maj(t_param *param);
 void	get_hexa_len(unsigned long int n, int *hexa_len);
-void	parse_precision(t_param *param, const char *str, int *j);
+void	parse_flags(t_param *param, const char *str);
+void	parse_precision(t_param *param, const char *str);
 void	reinit_param(t_param *param);
-int		ft_putstr(char *str); //existe aussi ds libft?
-int		ft_putchar(char c); //existe aussi dans libf ?
+int		ft_putstr(char *str);
+int		ft_putchar(char c);
 int		parse(t_param *param, int n, int *ptr_len);
-int		get_int_len(t_param *param, int n);
+int		get_int_len(t_param *param, long long n);
 void	print_d_or_i(t_param *param);
 void	print_c(t_param *param);
 void	print_s(t_param *param);
 void	print_u(t_param *param);
 void	print_p(t_param *param);
 void	print_x(t_param *param, unsigned long int n);
+void	print_pct(t_param *param);
 
 #endif
