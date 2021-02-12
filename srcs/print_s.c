@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:28:32 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/08 17:36:27 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:06:19 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_padding_minus(t_param *param, char *s, int len)
 void	print_s(t_param *param)
 {
 	int		i;
-	int 	len;
+	int		len;
 	char	*s;
 
 	i = 0;

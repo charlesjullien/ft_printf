@@ -6,13 +6,13 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 17:54:33 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/09 18:32:36 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:28:17 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int	get_int_len(t_param *param, long long n)
+int		get_int_len(t_param *param, long int n)
 {
 	int		len;
 
@@ -30,7 +30,7 @@ int	get_int_len(t_param *param, long long n)
 	return (len);
 }
 
-int	parse(t_param *param, int n, int *ptr_len)
+int		parse(t_param *param, long int n, int *ptr_len)
 {
 	int displayed_prec;
 

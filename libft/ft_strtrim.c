@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 18:29:44 by cjullien          #+#    #+#             */
-/*   Updated: 2020/12/03 17:30:49 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:38:21 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int				get_lenght(char const *s1, char const *set)
 		b++;
 	}
 	return (dest_len + 1);
-
 }
 
 char			*ft_strtrim(char const *s1, char const *set)

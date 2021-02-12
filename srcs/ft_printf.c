@@ -6,11 +6,11 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:17:07 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/11 23:23:40 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:00:50 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h" //checker les leaks (pas free);
+#include "../includes/ft_printf.h"
 
 int		check_type(t_param *param)
 {
@@ -23,7 +23,7 @@ int		check_type(t_param *param)
 	else
 		return (0);
 }
-#include <stdio.h>
+
 void	find_type(t_param *param)
 {
 	if (param->type == 'c')
@@ -35,19 +35,14 @@ void	find_type(t_param *param)
 	if (param->type == 'u')
 		print_u(param);
 	if (param->type == 'x' || param->type == 'X')
-	{
-		unsigned int n = 0;
-		n = va_arg(param->ap, unsigned int);
-		//printf("||n = %u||\n", n);
-		print_x(param, n);
-	}
+		print_x(param, va_arg(param->ap, unsigned int));
 	if (param->type == 'p')
 		print_p(param);
 	if (param->type == '%')
 		print_pct(param);
 }
 
-int	find_specifiers(t_param *param, const char *str, int *j)
+int		find_specifiers(t_param *param, const char *str, int *j)
 {
 	if (str[*j + 1])
 		*j = *j + 1;
@@ -91,8 +86,8 @@ t_param	*init_param(void)
 	param->precision = -1;
 	return (param);
 }
-#include <stdio.h>
-int	ft_printf(const char *str, ...)
+
+int		ft_printf(const char *str, ...)
 {
 	int		i;
 	t_param	*param;

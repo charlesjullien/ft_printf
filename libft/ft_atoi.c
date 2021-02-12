@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 16:11:22 by cjullien          #+#    #+#             */
-/*   Updated: 2020/12/07 19:39:19 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:37:32 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int 			i;
-	long long int 	sign;
-	long long int 	res;
+	int				i;
+	long long int	sign;
+	long long int	res;
 
 	i = 0;
 	sign = 1;

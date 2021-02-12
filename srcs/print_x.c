@@ -6,13 +6,13 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:32:54 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/11 23:23:49 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/12 18:53:44 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	print_no_precision3(t_param *param, unsigned int n, int len)
+void	no_prec_x(t_param *param, unsigned int n, int len)
 {
 	if (param->padding == ' ')
 	{
@@ -34,7 +34,7 @@ void	print_no_precision3(t_param *param, unsigned int n, int len)
 	}
 }
 
-void	print_rest3(t_param *param, unsigned int n, int displayed_prec)
+void	print_rest_x(t_param *param, unsigned int n, int displayed_prec)
 {
 	while (displayed_prec > 0)
 	{
@@ -44,7 +44,7 @@ void	print_rest3(t_param *param, unsigned int n, int displayed_prec)
 	ft_put_hexa(param, n);
 }
 
-void	big_width(t_param *param, unsigned int n, int len, int disp_prec)
+void	width_x(t_param *param, unsigned int n, int len, int disp_prec)
 {
 	if (param->padding == ' ')
 	{
@@ -62,15 +62,15 @@ void	big_width(t_param *param, unsigned int n, int len, int disp_prec)
 	}
 	if (param->padding == '0' || !param->padding)
 	{
-		print_rest3(param, n, disp_prec);
+		print_rest_x(param, n, disp_prec);
 	}
 }
 
-void	print_prec3(t_param *param, unsigned int n, int len, int disp_prec)
+void	prec_x(t_param *param, unsigned int n, int len, int disp_prec)
 {
 	if (param->precision == 0 && n == 0)
 	{
-		while (param->width  > 0)
+		while (param->width > 0)
 		{
 			param->ret += ft_putchar(' ');
 			param->width--;
@@ -87,12 +87,11 @@ void	print_prec3(t_param *param, unsigned int n, int len, int disp_prec)
 		ft_put_hexa(param, n);
 	}
 	else
-		big_width(param, n, len, disp_prec);
+		width_x(param, n, len, disp_prec);
 }
-#include <stdio.h>
+
 void	print_x(t_param *param, unsigned int n)
 {
-	//printf("*|n = %u|*", n);
 	int hexa_len;
 	int len;
 	int	displayed_prec;
@@ -100,13 +99,13 @@ void	print_x(t_param *param, unsigned int n)
 	hexa_len = 0;
 	get_hexa_len(n, &hexa_len);
 	len = hexa_len;
-	displayed_prec = 0; //ca je viens de le rajouter
+	displayed_prec = 0;
 	if (param->type == 'X')
 		set_base_maj(param);
 	if (param->precision >= 0)
 		displayed_prec = param->precision - len;
 	if (param->precision < 0)
-		print_no_precision3(param, n, len);
+		no_prec_x(param, n, len);
 	if (param->precision < 0 && param->width <= len && !param->padding)
 		ft_put_hexa(param, n);
 	while (param->precision < 0 && !param->padding && param->width > len)
@@ -117,5 +116,5 @@ void	print_x(t_param *param, unsigned int n)
 			ft_put_hexa(param, n);
 	}
 	if (param->precision >= 0)
-		print_prec3(param, n, len, displayed_prec);
+		prec_x(param, n, len, displayed_prec);
 }
