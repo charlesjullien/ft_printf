@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 17:32:54 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/10 21:36:43 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/11 23:23:49 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@ void	print_prec3(t_param *param, unsigned int n, int len, int disp_prec)
 	else
 		big_width(param, n, len, disp_prec);
 }
-
-void	print_x(t_param *param, unsigned long int n)
+#include <stdio.h>
+void	print_x(t_param *param, unsigned int n)
 {
+	//printf("*|n = %u|*", n);
 	int hexa_len;
 	int len;
 	int	displayed_prec;
@@ -99,6 +100,7 @@ void	print_x(t_param *param, unsigned long int n)
 	hexa_len = 0;
 	get_hexa_len(n, &hexa_len);
 	len = hexa_len;
+	displayed_prec = 0; //ca je viens de le rajouter
 	if (param->type == 'X')
 		set_base_maj(param);
 	if (param->precision >= 0)

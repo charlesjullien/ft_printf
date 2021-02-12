@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:03 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/09 18:33:14 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/11 23:22:28 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	print_c(t_param *param);
 void	print_s(t_param *param);
 void	print_u(t_param *param);
 void	print_p(t_param *param);
-void	print_x(t_param *param, unsigned long int n);
+void	print_x(t_param *param, unsigned int n);
 void	print_pct(t_param *param);
 
 #endif
