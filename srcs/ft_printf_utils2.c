@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 18:35:47 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/12 19:27:44 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/14 16:47:03 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	parse_precision(t_param *param, const char *str)
 		param->precision = ft_atoi(&str[i]);
 }
 
-void	get_hexa_len(unsigned int n, int *hexa_len)
+void	get_hexa_len(unsigned long int n, int *hexa_len)
 {
 	if (n >= 16)
-		get_hexa_len((unsigned int)(n / 16), hexa_len);
+		get_hexa_len((unsigned long int)(n / 16), hexa_len);
 	*hexa_len = *hexa_len + 1;
 }
 
@@ -60,9 +60,9 @@ void	set_base_maj(t_param *param)
 	}
 }
 
-void	ft_put_hexa(t_param *param, unsigned int n)
+void	ft_put_hexa(t_param *param, unsigned long int n)
 {
 	if (n >= 16)
-		ft_put_hexa(param, (unsigned int)(n / 16));
+		ft_put_hexa(param, (unsigned long int)(n / 16));
 	param->ret += ft_putchar(param->base[n % 16]);
 }

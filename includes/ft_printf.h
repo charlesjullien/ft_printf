@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:18:03 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/12 19:33:14 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/14 16:47:58 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ struct			s_parameters
 };
 
 int				ft_printf(const char *str, ...);
-void			ft_put_hexa(t_param *param, unsigned int n);
+void			ft_put_hexa(t_param *param, unsigned long int n);
 void			set_base_maj(t_param *param);
-void			get_hexa_len(unsigned int n, int *hexa_len);
+void			get_hexa_len(unsigned long int n, int *hexa_len);
 void			parse_flags(t_param *param, const char *str);
 void			parse_precision(t_param *param, const char *str);
 void			reinit_param(t_param *param);
