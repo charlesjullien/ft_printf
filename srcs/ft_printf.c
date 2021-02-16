@@ -6,7 +6,7 @@
 /*   By: cjullien <cjullien@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:17:07 by cjullien          #+#    #+#             */
-/*   Updated: 2021/02/12 19:00:50 by cjullien         ###   ########.fr       */
+/*   Updated: 2021/02/16 14:38:15 by cjullien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int		find_specifiers(t_param *param, const char *str, int *j)
 		*j = *j + 1;
 	if (str[*j] == '.')
 		parse_precision(param, &str[*j]);
-	while (str[*j] == '.' || str[*j] == '*' || ft_isdigit(str[*j]))
+	while (str[*j] == '.' || str[*j] == '*' || ft_isdigit(str[*j]) ||
+			str[*j] == '-')
 		*j = *j + 1;
 	param->type = str[*j];
 	return (check_type(param));
@@ -111,6 +112,7 @@ int		ft_printf(const char *str, ...)
 		i++;
 	}
 	va_end(param->ap);
+	i = param->ret;
 	free(param);
-	return (param->ret);
+	return (i);
 }
